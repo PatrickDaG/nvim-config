@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='scp://nas/'
+let g:netrw_dirhist_6='/home/patrick/Downloads'
+let g:netrw_dirhist_5='scp://nas/.ssh/'
+let g:netrw_dirhist_4='scp://nas/'
+let g:netrw_dirhist_3='/home/patrickg/private/Private/AoC2020/Day03'
+let g:netrw_dirhist_2='/etc/herbstluftwm/autostart.d'
+let g:netrw_dirhist_1='/etc/herbstluftwm'

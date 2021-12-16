@@ -12,6 +12,7 @@
 --basic global settings
 require "core.config"
 require "core.keybinds"
+require "core.lsp"
 
 
 --should not be here but we stupid

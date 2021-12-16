@@ -1,5 +1,6 @@
 -- required programs
 -- ripgrep
+-- git
 
 
 -- general settings

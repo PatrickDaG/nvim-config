@@ -108,9 +108,9 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   }
 })
---language servers
+-- language servers
 
-require('lspconfig').sumneko_lua.setup {}              --still need github sumneko/lua-language-server
+-- require('lspconfig').sumneko_lua.setup {}              --still need github sumneko/lua-language-server
 require('lspconfig').clangd.setup {}        --needs clang
 require('lspconfig').rust_analyzer.setup {}      --still needs rust analyzer installed
 require('lspconfig').bashls.setup {}  --needs bash-language-server from npm

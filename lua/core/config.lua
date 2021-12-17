@@ -9,9 +9,6 @@ opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 -- swap file save interval
 opt.updatetime = 300
 
--- Allow to hide buffers with unsaved changes (e.g. closing the split)
-opt.hidden = true
-
 -- Ignore *.o and *~ files in wildmenu
 opt.wildignore = "*.o,*~"
 -- Only complete the longest common prefix and list all results.
@@ -65,8 +62,6 @@ opt.shiftround  =  true
 -- q = allow explicit formatting with gq
 -- j = remove comment leaders when joining lines if it makes sense
 opt.formatoptions = "rqj"
---prevent multiple spaces resulted from joining after sentence
-opt.joinspaces = true
 
 -- Allow the curser to be positioned on cells that have no actual character;
 -- Like moving beyond EOL or on any visual 'space' of a tab character

@@ -20,5 +20,4 @@ require('alpha').setup {
 		A.text(separator, 'Number'),
 	},
 	opts = { margin = 5 },
-}             
-
+}

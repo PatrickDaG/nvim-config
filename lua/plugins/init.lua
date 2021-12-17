@@ -7,8 +7,11 @@ if fn.empty(fn.glob(intall_path)) > 0 then
 	vim.cmd "packadd packer.nvim"
 end
 
+local function conf(module)
+	return "require('plugins.config." .. module .. "')"
+end
 
-return require("packer").startup(function()
+return require("packer").startup(function(use)
 	--packer managing itself
 	use "wbthomason/packer.nvim"
 
@@ -26,12 +29,26 @@ return require("packer").startup(function()
 	--colorscheme
 	use { "navarasu/onedark.nvim", config = function() require("plugins.config.onedark") end}
 
-	-- buffer/tabline
-	--use { "romgrk/barbar.nvim", 
-	--	requires = {"kyazdani42/nvim-web-devicons"},
-	--	config = function() require("barbar")
-	--	} 
-	
+	-- nice line before lines
+	use { "lukas-reineke/indent-blankline.nvim", config = conf("indent-blankline")}
+	-- make spaces red
+	use { "ntpeters/vim-better-whitespace", config = conf("better-whitespace")}
+
+	-- signale für git
+	use { "lewis6991/gitsigns.nvim",
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require("gitsigns").setup {
+			}
+		end
+	}
+
+	use { 'kosayoda/nvim-lightbulb', config = conf("lightbulb") }
+
+	-- dressing macht refactoring fenster schöner
+	use { 'stevearc/dressing.nvim' }
 
     -- Language Support ---------------------------------------------
 	-- leligs -------------------------------------------------------
@@ -40,9 +57,8 @@ return require("packer").startup(function()
 	--treesitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
-		branch = "0.5-compat",
 		event = "BufRead",
-		config = function() require("plugins.config.treesitter") end
+		config = conf("treesitter"),
 	}
 
 	--sane(I hope) default configs for a number of lsps ------------
@@ -73,7 +89,7 @@ return require("packer").startup(function()
 	-- function signature on hover
 	use { "ray-x/lsp_signature.nvim", after = "nvim-lspconfig",
 			config = function() require("lsp_signature").setup() end }
-	
+
 	--pictograms in lsp completion
 	use { "onsails/lspkind-nvim" }
 
@@ -104,8 +120,27 @@ return require("packer").startup(function()
 					  {"sudormrfbin/cheatsheet.nvim"},
 					  {"nvim-telescope/telescope-fzf-native.nvim", run = 'make'} },
 		 cmd = "Telescope",
-		 config = function() require("plugins.config.telescope") end
+		 config = conf("telescope")
 	 }
+
+	 -- undo tree weil badly needed
+	 use { "simnalamburt/vim-mundo", config = conf("mundo") }
+
+	 -- vim multi cursor witl malze meint es wäre gut
+	 use { "mg979/vim-visual-multi", config = conf("vim-visual-multi") }
+	 -- git in vim für die die es brauchen
+	 use { "tpope/vim-fugitive" }
+
+	 -- Plugins for editing wuhu
+
+	 -- Surround shit pls
+	 use { "tpope/vim-surround" }
+
+	-- Commenting
+	use { "numToStr/Comment.nvim", config = conf("comment") }
+
+	-- align thing according to shit
+	use { "junegunn/vim-easy-align", config = conf("vim-easy-align") }
 
 
 end)

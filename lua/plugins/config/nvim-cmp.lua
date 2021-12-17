@@ -61,7 +61,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c'}),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
     ['<C-e>'] = cmp.mapping(cmp.mapping.close(), { 'i', 'c'} ),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
          cmp.select_next_item()
@@ -109,8 +109,27 @@ cmp.setup.cmdline(':', {
   }
 })
 -- language servers
+local sumneko_root_path = vim.fn.stdpath("data").."/lua-language-server"
+local sumneko_binary = sumneko_root_path.."/bin/lua-language-server"
 
--- require('lspconfig').sumneko_lua.setup {}              --still need github sumneko/lua-language-server
+require("lspconfig").sumneko_lua.setup {    -- lua:    https://github.com/sumneko/lua-language-server
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = { enable = false, },
+		},
+	},
+}
+
 require('lspconfig').clangd.setup {}        --needs clang
 require('lspconfig').rust_analyzer.setup {}      --still needs rust analyzer installed
 require('lspconfig').bashls.setup {}  --needs bash-language-server from npm

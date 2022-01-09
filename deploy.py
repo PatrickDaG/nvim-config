@@ -13,6 +13,6 @@ if home_directory == "\\":
     raise ValueError("Home on root not allowed")
 
 
-git.repo(url = "https://github.com/PatrickDaG/nvim-config",
+git.repo(url = "https://github.com/PatrickDaG/nvim-config.git",
         path = f"{home_directory}/.config/nvim",
         depth = 1)

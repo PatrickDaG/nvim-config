@@ -140,7 +140,7 @@ return require("packer").startup(function(use)
 	use { "numToStr/Comment.nvim", config = conf("comment") }
 
 	-- align thing according to shit
-	use { "junegunn/vim-easy-align", config = conf("vim-easy-align") }
+	use { "junegunn/vim-easy-align" }
 
 
 end)

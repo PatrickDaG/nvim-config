@@ -30,11 +30,6 @@ opt.guifont = "FiraCode Nerd Font Mono:h10.5"
 -- full mouse support
 opt.mouse = "a"
 
---set window title
-opt.title = true
-opt.titlestring = "%t"
-opt.titlelen = 80
-
 -- Do not wrap text longer than the window's width
 opt.wrap = false
 
